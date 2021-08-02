@@ -19,8 +19,8 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine {
 			blogposts.POST("/", controller.CreateBlogPost) //  criar blogposts
 			blogposts.PUT("/", controller.UpdateBlogPost) //  atualizar blogposts
 			blogposts.DELETE("/:id", controller.DeleteBlogPost) //  deletar blogpost
-
 		}
+		main.POST("login",controller.Login)
 	}
 	return router
 }

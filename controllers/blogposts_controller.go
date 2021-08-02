@@ -21,8 +21,8 @@ func ShowBlogPost(c *gin.Context){
 	}
 	db := database.GetDatabase()
 
-	var blogposts models.BlogPost
-	err = db.First(&blogposts, newid).Error
+	var p models.BlogPost
+	err = db.First(&p, newid).Error
 	if err != nil {
 		c.JSON(400, gin.H{
 			"error": "Não consigo encontrar o produto:" + err.Error(),
@@ -30,30 +30,30 @@ func ShowBlogPost(c *gin.Context){
 		return
 	}
 
-	c.JSON(200, blogposts)
+	c.JSON(200, p)
 }
 
 //Segundo endpoint
 func CreateBlogPost(c *gin.Context){
 	db := database.GetDatabase()
 
-	var blogposts models.BlogPost
+	var p models.BlogPost
 
-	err:= c.ShouldBindJSON(&blogposts)
+	err:= c.ShouldBindJSON(&p)
 	if err != nil{
 		c.JSON(400, gin.H{
 			"error": "Não consigo pegar o JSON: " + err.Error(),
 		})
 		return
 	}
-	err = db.Create(&blogposts).Error
+	err = db.Create(&p).Error
 
 	if err != nil {
 		c.JSON(400, gin.H{
 			"error": "Não consigo criar o blogposts: " + err.Error(),
 		})
 	}
-	c.JSON(200, blogposts)
+	c.JSON(200, p)
 }
 
 //terceiro endpoint
@@ -61,15 +61,15 @@ func ShowBlogPosts(c *gin.Context){
 
 	db := database.GetDatabase()
 
-	var blogposts []models.BlogPost
-	err := db.Find(&blogposts).Error
+	var p []models.BlogPost
+	err := db.Find(&p).Error
 	if err != nil {
 		c.JSON(400, gin.H{
 			"error": "Não consigo listar os blogposts: " + err.Error(),
 		})
 		return
 	}
-	c.JSON(200, blogposts)
+	c.JSON(200, p)
 
 }
 
@@ -77,23 +77,23 @@ func ShowBlogPosts(c *gin.Context){
 func UpdateBlogPost(c *gin.Context){
 	db := database.GetDatabase()
 
-	var blogposts models.BlogPost
+	var p models.BlogPost
 
-	err:= c.ShouldBindJSON(&blogposts)
+	err:= c.ShouldBindJSON(&p)
 	if err != nil{
 		c.JSON(400, gin.H{
 			"error": "Não consigo pegar o JSON: " + err.Error(),
 		})
 		return
 	}
-	err = db.Save(&blogposts).Error
+	err = db.Save(&p).Error
 
 	if err != nil {
 		c.JSON(400, gin.H{
 			"error": "Não pode atualizar o blogpost: " + err.Error(),
 		})
 	}
-	c.JSON(200, blogposts)
+	c.JSON(200, p)
 }
 
 //quinto endpoint

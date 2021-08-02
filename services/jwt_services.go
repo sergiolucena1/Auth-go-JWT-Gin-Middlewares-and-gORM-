@@ -26,7 +26,7 @@ type  Claim struct {
 }
 
 //função de gerar o token
-func (s *jwtService) GenerateToken(id uint)(string, error){
+func (s *jwtService) GenerateToken(id uint) (string, error) {
 	claim := &Claim{
 		id,
 		jwt.StandardClaims{
