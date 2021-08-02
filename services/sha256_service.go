@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-//encriptando o password
+//encriptando o password( PASSANDO NOSSA SENHA PARA SHA 256)
 func SHA256Encoder(s string)string{
 	str := sha256.Sum256([]byte(s))   // pacote do go parea encriptar
 
