@@ -3,6 +3,7 @@ package routes
 import (
 	"github.com/gin-gonic/gin"
 	controller "github.com/sergiolucena1/controllers"
+	"github.com/sergiolucena1/middlewares"
 )
 
 func ConfigRoutes(router *gin.Engine) *gin.Engine {
@@ -12,7 +13,7 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine {
 		{
 			users.POST("/", controller.CreateUser) // criando usuario
 		}
-		blogposts:= main.Group("blogposts")
+		blogposts:= main.Group("blogposts", middlewares.Auth())
 		{
 			blogposts.GET("/:id", controller.ShowBlogPost) //  mostrar blogposts por id
 			blogposts.GET("/", controller.ShowBlogPosts) // mostrar todos os blogposts
