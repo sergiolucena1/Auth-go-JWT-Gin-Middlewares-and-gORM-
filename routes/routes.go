@@ -8,6 +8,10 @@ import (
 func ConfigRoutes(router *gin.Engine) *gin.Engine {
 	main := router.Group("api/v1")
 	{
+		users := main.Group("users") // criando minha rota de usuario
+		{
+			users.POST("/", controller.CreateUser) // criando usuario
+		}
 		blogposts:= main.Group("blogposts")
 		{
 			blogposts.GET("/:id", controller.ShowBlogPost) //  mostrar blogposts por id
