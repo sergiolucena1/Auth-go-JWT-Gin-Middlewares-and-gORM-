@@ -1,3 +1,17 @@
 # Rest-API-challenge (JWT, Gin Middlewares e gORM)
 
-Requisitos A saída das requests deve ser em JSON Os endpoints desenvolvidos devem ser documentados. O blogposts deve ter pelo menos os seguintes campos: title, content, slug, created_by   A tabela de usuários precisa ter: username, password_hash  O código deve ter testes unitários e ser bem coberto por comentários.  O uso do git para o desenvolvimento desse desafio será fundamental.   Utilize o Conventional Commits   Entrega: Não esperamos uma aplicação a nível de produção, o principal intuito é avaliar o seu nível de conhecimento na linguagem e se os requisitos foram cumpridos, no entanto, queremos poder rodar a sua aplicação e validar alguns pontos:   Devemos poder executar sua aplicação e já ter um banco de dados minimamente populado com 1 usuário cadastrado e 3 blogposts Queremos ler seus comentários dentro do código Queremos rodar os testes unitários e saber que tudo pode rodar bem Devemos poder testar as rotas pelo Insomnia Queremos visualizar um único blogpost através do slug dele Seria bom se pudéssemos executar a sua aplicação através do docker-compose  Avaliação Verificação do uso do Git Documentação da rotas Rodar testes unitários Executar e server e rodar migrations (para os dados que já devem vir cadastrados) Cobertura de comentários no código Teste de funcionalidade das rotas Visualização de um blogpost pelo slug  Diferenciais Muito mais do que um código bem escrito, é a previsibilidade que o desenvolvedor (você) nos apresenta, por exemplo, pense que seu código receberá muitas implementações no futuro e em como você poderia deixar já minimamente estruturado para receber essas novas implementações. As suas decisões na arquitetura do seu código irão nos mostrar isso. Um desenvolvedor deve sempre pensar em facilitar a vida do usuário final. Pense em nós como usuário final. 
+Rest api em golang, criando endpoint de blogposts que cria, edita, lista pelo ID e deleta.
+
+usando o Gin para criar o server, routes, instanciar controllers : $ go get -u github.com/gin-gonic/gin
+
+Nessa aplicação uso o Gorm como ORM : $ go get gorm.io/gorm
+criei no banco de dados a tablea de blogposts e de usuário  (para ser atutenticado)
+
+Autentico usuário usando JWT
+*Escondendo o Password para SHA256
+*Gerar um JWT
+*Criar Login model e controller 
+*Criar Middleware no GIN 
+
+Tudo foi testado e aplicado usando o Insomnia 
+
